@@ -91,7 +91,6 @@ public final class IKTokenizer extends Tokenizer {
 
     @Override
     public final void end() {
-        // set final offset
         final int finalOffset = this.correctOffset(this.endPosition);
         this.offsetAtt.setOffset(finalOffset, finalOffset);
     }

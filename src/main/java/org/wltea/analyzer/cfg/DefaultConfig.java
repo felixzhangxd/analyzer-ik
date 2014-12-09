@@ -26,18 +26,19 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.lucene.util.Version;
+
 /**
  * Configuration 默认实现
  * 2012-5-8
  */
 public class DefaultConfig implements Configuration {
+    public static final Version LUCENE_VERSION      = Version.LUCENE_42;
     /*
      * 分词器默认字典路径
      */
-    // private static final String PATH_DIC_MAIN = "main.dic";
-    // private static final String PATH_DIC_QUANTIFIER = "quantifier.dic";
-    private static final String PATH_DIC_MAIN       = "org/wltea/analyzer/dic/main2012.dic";
-    private static final String PATH_DIC_QUANTIFIER = "org/wltea/analyzer/dic";
+    private static final String PATH_DIC_MAIN       = "main.dic";
+    private static final String PATH_DIC_QUANTIFIER = "quantifier.dic";
     /*
      * 分词器配置文件路径
      */

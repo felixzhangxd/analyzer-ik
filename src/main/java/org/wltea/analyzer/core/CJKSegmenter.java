@@ -38,10 +38,6 @@ class CJKSegmenter implements ISegmenter {
         this.tmpHits = new LinkedList<Hit>();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see org.wltea.analyzer.core.ISegmenter#analyze(org.wltea.analyzer.core.AnalyzeContext)
-     */
     @Override
     public void analyze(final AnalyzeContext context) {
         if (CharacterUtil.CHAR_USELESS != context.getCurrentCharType()) {
@@ -53,8 +49,7 @@ class CJKSegmenter implements ISegmenter {
                     hit = Dictionary.getSingleton().matchWithHit(context.getSegmentBuff(), context.getCursor(), hit);
                     if (hit.isMatch()) {
                         // 输出当前的词
-                        final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), hit.getBegin(), context.getCursor() - hit.getBegin() + 1,
-                                Lexeme.TYPE_CNWORD);
+                        final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), hit.getBegin(), context.getCursor() - hit.getBegin() + 1, Lexeme.TYPE_CNWORD);
                         context.addLexeme(newLexeme);
                         if (!hit.isPrefix()) {// 不是词前缀，hit不需要继续匹配，移除
                             this.tmpHits.remove(hit);
@@ -99,10 +94,6 @@ class CJKSegmenter implements ISegmenter {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see org.wltea.analyzer.core.ISegmenter#reset()
-     */
     @Override
     public void reset() {
         // 清空队列

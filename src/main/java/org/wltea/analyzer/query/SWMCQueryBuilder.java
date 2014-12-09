@@ -29,7 +29,7 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.queryparser.classic.QueryParserBase;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.util.Version;
+import org.wltea.analyzer.cfg.DefaultConfig;
 import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
 
@@ -116,7 +116,7 @@ public class SWMCQueryBuilder {
             lastLexemeEnd = l.getEndPosition();
         }
         // 借助lucene queryparser 生成SWMC Query
-        final QueryParser qp = new QueryParser(Version.LUCENE_42, fieldName, new StandardAnalyzer(Version.LUCENE_42));
+        final QueryParser qp = new QueryParser(DefaultConfig.LUCENE_VERSION, fieldName, new StandardAnalyzer(DefaultConfig.LUCENE_VERSION));
         qp.setDefaultOperator(QueryParserBase.AND_OPERATOR);
         qp.setAutoGeneratePhraseQueries(true);
         if (quickMode && ((shortCount * 1.0f / totalCount) > 0.5f)) {

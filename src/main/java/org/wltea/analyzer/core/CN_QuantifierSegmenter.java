@@ -95,15 +95,13 @@ class CN_QuantifierSegmenter implements ISegmenter {
      */
     private void processCNumber(final AnalyzeContext context) {
         if ((this.nStart == -1) && (this.nEnd == -1)) {// 初始状态
-            if ((CharacterUtil.CHAR_CHINESE == context.getCurrentCharType())
-                    && CN_QuantifierSegmenter.ChnNumberChars.contains(context.getCurrentChar())) {
+            if ((CharacterUtil.CHAR_CHINESE == context.getCurrentCharType()) && CN_QuantifierSegmenter.ChnNumberChars.contains(context.getCurrentChar())) {
                 // 记录数词的起始、结束位置
                 this.nStart = context.getCursor();
                 this.nEnd = context.getCursor();
             }
         } else {// 正在处理状态
-            if ((CharacterUtil.CHAR_CHINESE == context.getCurrentCharType())
-                    && CN_QuantifierSegmenter.ChnNumberChars.contains(context.getCurrentChar())) {
+            if ((CharacterUtil.CHAR_CHINESE == context.getCurrentCharType()) && CN_QuantifierSegmenter.ChnNumberChars.contains(context.getCurrentChar())) {
                 // 记录数词的结束位置
                 this.nEnd = context.getCursor();
             } else {
@@ -145,8 +143,7 @@ class CN_QuantifierSegmenter implements ISegmenter {
                     hit = Dictionary.getSingleton().matchWithHit(context.getSegmentBuff(), context.getCursor(), hit);
                     if (hit.isMatch()) {
                         // 输出当前的词
-                        final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), hit.getBegin(), context.getCursor() - hit.getBegin() + 1,
-                                Lexeme.TYPE_COUNT);
+                        final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), hit.getBegin(), context.getCursor() - hit.getBegin() + 1, Lexeme.TYPE_COUNT);
                         context.addLexeme(newLexeme);
                         if (!hit.isPrefix()) {// 不是词前缀，hit不需要继续匹配，移除
                             this.countHits.remove(hit);

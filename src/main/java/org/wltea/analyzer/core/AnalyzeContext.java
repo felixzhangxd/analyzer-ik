@@ -199,8 +199,7 @@ class AnalyzeContext {
      * @return
      */
     boolean needRefillBuffer() {
-        return (this.available == AnalyzeContext.BUFF_SIZE) && (this.cursor < this.available - 1)
-                && (this.cursor > this.available - AnalyzeContext.BUFF_EXHAUST_CRITICAL) && !this.isBufferLocked();
+        return (this.available == AnalyzeContext.BUFF_SIZE) && (this.cursor < this.available - 1) && (this.cursor > this.available - AnalyzeContext.BUFF_EXHAUST_CRITICAL) && !this.isBufferLocked();
     }
 
     /**

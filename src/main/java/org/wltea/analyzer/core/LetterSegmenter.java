@@ -177,8 +177,7 @@ class LetterSegmenter implements ISegmenter {
                 this.englishEnd = context.getCursor();
             } else {
                 // 遇到非English字符,输出词元
-                final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), this.englishStart, this.englishEnd - this.englishStart + 1,
-                        Lexeme.TYPE_ENGLISH);
+                final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), this.englishStart, this.englishEnd - this.englishStart + 1, Lexeme.TYPE_ENGLISH);
                 context.addLexeme(newLexeme);
                 this.englishStart = -1;
                 this.englishEnd = -1;
@@ -188,8 +187,7 @@ class LetterSegmenter implements ISegmenter {
         if (context.isBufferConsumed()) {
             if ((this.englishStart != -1) && (this.englishEnd != -1)) {
                 // 缓冲以读完，输出词元
-                final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), this.englishStart, this.englishEnd - this.englishStart + 1,
-                        Lexeme.TYPE_ENGLISH);
+                final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), this.englishStart, this.englishEnd - this.englishStart + 1, Lexeme.TYPE_ENGLISH);
                 context.addLexeme(newLexeme);
                 this.englishStart = -1;
                 this.englishEnd = -1;
@@ -227,8 +225,7 @@ class LetterSegmenter implements ISegmenter {
                 // 不输出数字，但不标记结束
             } else {
                 // //遇到非Arabic字符,输出词元
-                final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), this.arabicStart, this.arabicEnd - this.arabicStart + 1,
-                        Lexeme.TYPE_ARABIC);
+                final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), this.arabicStart, this.arabicEnd - this.arabicStart + 1, Lexeme.TYPE_ARABIC);
                 context.addLexeme(newLexeme);
                 this.arabicStart = -1;
                 this.arabicEnd = -1;
@@ -238,8 +235,7 @@ class LetterSegmenter implements ISegmenter {
         if (context.isBufferConsumed()) {
             if ((this.arabicStart != -1) && (this.arabicEnd != -1)) {
                 // 生成已切分的词元
-                final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), this.arabicStart, this.arabicEnd - this.arabicStart + 1,
-                        Lexeme.TYPE_ARABIC);
+                final Lexeme newLexeme = new Lexeme(context.getBufferOffset(), this.arabicStart, this.arabicEnd - this.arabicStart + 1, Lexeme.TYPE_ARABIC);
                 context.addLexeme(newLexeme);
                 this.arabicStart = -1;
                 this.arabicEnd = -1;

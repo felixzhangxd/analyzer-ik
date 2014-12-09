@@ -516,10 +516,6 @@ public class IKQueryExpressionParser {
                     resultQuery.add(q1, Occur.MUST);
                 }
             } else {
-                // q1 instanceof TermQuery
-                // q1 instanceof TermRangeQuery
-                // q1 instanceof PhraseQuery
-                // others
                 resultQuery.add(q1, Occur.MUST);
             }
             resultQuery.add(q2, Occur.MUST_NOT);
